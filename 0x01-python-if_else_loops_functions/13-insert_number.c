@@ -9,7 +9,7 @@ listint_t *insert_node(listint_t **head, int number)
 {
 	listint_t *new, *search = *head;
 
-	if (search->n > number || !search)
+	if (*head == NULL || search->n > number)
 	{
 		new = malloc(sizeof(listint_t));
 		if (!new)
@@ -21,11 +21,11 @@ listint_t *insert_node(listint_t **head, int number)
 	}
 	while (search)
 	{
-		new = malloc(sizeof(listint_t));
-		if (!new)
-			return (NULL);
 		if (!search->next || search->next->n > number)
 		{
+			new = malloc(sizeof(listint_t));
+			if (!new)
+				return (NULL);
 			new->n = number;
 			new->next = search->next;
 			search->next = new;
