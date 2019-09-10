@@ -30,6 +30,16 @@ listint_t *insert_node(listint_t **head, int number)
 			search->next = new;
 			return (new);
 		}
+		if (search->next->next == NULL)
+		{
+			if (search->n < number)
+			{
+				new->n = number;
+				new->next = NULL;
+				search->next = new;
+				return (new);
+			}
+		}
 		search = search->next;
 	}
 	free(new);
