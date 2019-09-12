@@ -10,7 +10,7 @@ def main():
     elif len(argv) > 2:
         print("{:d} arguments:".format(len(argv) - 1))
     for args in range(1, len(argv)):
-        print("{:d} {}".format(args, argv[args]))
+        print("{:d}: {}".format(args, argv[args]))
 
 if __name__ == "__main__":
     main()
