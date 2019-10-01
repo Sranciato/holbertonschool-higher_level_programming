@@ -20,7 +20,7 @@ class Square:
         position
 
         """
-        self.__size = size
+        self.size = size
         self.position = position
 
     @property
@@ -61,6 +61,8 @@ class Square:
         TypeError
 
         """
+        if len(value) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
         if type(value[0]) is not int or type(value[1]) is not int:
             raise TypeError("position must be a tuple of 2 positive integers")
         if type(value) is not tuple:
