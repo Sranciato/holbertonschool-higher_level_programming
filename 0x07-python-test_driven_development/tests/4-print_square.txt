@@ -1,0 +1,27 @@
+>>> print_square = __import__('4-print_square').print_square
+>>> try:
+...	print_square(None)
+... except Exception as e:
+... 	print(e)
+size must be an integer
+
+>>> try:
+...	print_square("hey")
+... except Exception as e:
+... 	print(e)
+size must be an integer
+
+>>> try:
+...	print_square(-59)
+... except Exception as e:
+... 	print(e)
+size must be >= 0
+
+>>> print_square(0.3)
+
+
+>>> print_square(3.5)
+###
+###
+###
+
