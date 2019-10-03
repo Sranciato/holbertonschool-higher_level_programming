@@ -1,0 +1,41 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> try:
+...	text_indentation(None)
+... except Exception as e:
+... 	print(e)
+text must be a string
+
+>>> try:
+...	text_indentation(3)
+... except Exception as e:
+... 	print(e)
+text must be a string
+
+>>> try:
+...     text_indentation(4.5)
+... except Exception as e:
+...     print(e)
+text must be a string
+
+>>> text_indentation("Need to check: if this.works")
+Need to check:
+<BLANKLINE>
+if this.
+<BLANKLINE>
+works
+
+>>> text_indentation(":?.new_line")
+:
+<BLANKLINE>
+?
+<BLANKLINE>
+.
+<BLANKLINE>
+new_line
+
+>>> text_indentation(":\n:")
+:
+<BLANKLINE>
+<BLANKLINE>
+:
+<BLANKLINE>
