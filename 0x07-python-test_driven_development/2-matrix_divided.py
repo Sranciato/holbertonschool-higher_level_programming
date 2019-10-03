@@ -21,8 +21,6 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError(error4)
 
-    new = [[]]
-
     for row in matrix:
         if len(row) != list_len:
             raise TypeError(error2)
