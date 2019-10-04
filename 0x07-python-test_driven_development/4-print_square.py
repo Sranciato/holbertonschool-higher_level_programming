@@ -10,9 +10,9 @@ def print_square(size):
     """
     Prints a square based on size
     """
-    if type(size) != int and type(size) != float:
+    if not isinstance(size, int) and not isinstance(size, float):
         raise TypeError("size must be an integer")
-    if type(size) == float and size < 0:
+    if isinstance(size, float) and size < 0:
         raise TypeError("size must be an integer")
     size = int(size)
     if size < 0:

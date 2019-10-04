@@ -16,7 +16,7 @@ def matrix_divided(matrix, div):
     error4 = "division by zero"
     list_len = len(matrix[0])
 
-    if type(div) != int and type(div) != float:
+    if not isinstance(div, int) and not isinstance(div, float):
         raise TypeError(error3)
     if div == 0:
         raise ZeroDivisionError(error4)
@@ -25,7 +25,7 @@ def matrix_divided(matrix, div):
         if len(row) != list_len:
             raise TypeError(error2)
         for column in row:
-            if type(column) != int and type(column) != float:
+            if not isinstance(column, int) and not isinstance(column, float):
                 raise TypeError(error1)
 
         new = [[round(col / div, 2) for col in r] for r in matrix]
