@@ -27,3 +27,11 @@ class TestMaxInteger(unittest.TestCase):
     def test_0_args(self):
         """Test for no arguments"""
         self.assertEqual(max_integer(), None)
+
+    def test_first(self):
+        """Test first in list"""
+        self.assertEqual(max_integer([100, 2, 4, 5]), 100)
+
+    def test_last(self):
+        """Test last in list"""
+        self.assertEqual(max_integer([2, 4, 5, 100]), 100)
