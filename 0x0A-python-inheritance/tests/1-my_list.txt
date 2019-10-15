@@ -1,0 +1,9 @@
+>>> MyList = __import__('1-my_list').MyList
+
+>>> test = MyList([-1, -4, -6, 2])
+>>> MyList.print_sorted(test)
+[-6, -4, -1, 2]
+>>> test.print_sorted()
+[-6, -4, -1, 2]
+>>> print(MyList)
+<class '1-my_list.MyList'>
