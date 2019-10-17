@@ -18,3 +18,9 @@ class Student:
         if type(attrs) is list and type(attrs[0]) is str:
             return {key: v for key, v in vars(self).items() if key in attrs}
         return vars(self)
+
+    def reload_from_json(self, json):
+        """replace all attrs of student instance"""
+
+        for k, v in json.items():
+            setattr(self, k, v)
