@@ -103,3 +103,32 @@ class Rectangle(Base):
             self.width,
             self.height
         )
+
+    def update(self, *args, **kwargs):
+        """assigns an argument to each attribute"""
+
+        attributes = ("id", "width", "height", "x", "y")
+        if len(args) > 0:
+            i = 0
+            for name, value in zip(attributes, args):
+                if i == 0:
+                    super().__init__(value)
+                else:
+                    setattr(self, name, value)
+                i += 1
+        else:
+            for key in kwargs.keys():
+                for name in attributes:
+                    if key == name:
+                        setattr(self, name, kwargs[key])
+
+    def to_dictionary(self):
+        """returns dictionary representation of a Rectangle"""
+
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
+        }
