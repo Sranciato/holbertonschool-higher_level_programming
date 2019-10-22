@@ -2,6 +2,7 @@
 """Base class for all other classes"""
 import json
 import os
+import csv
 
 
 class Base:
@@ -32,7 +33,7 @@ class Base:
         """writes the json str representation of list_objs"""
 
         if list_objs is None:
-            list_objs = "[]"
+            list_objs = []
 
         list_objs = [obj.to_dictionary() for obj in list_objs]
         list_objs = cls.to_json_string(list_objs)
@@ -45,7 +46,7 @@ class Base:
         """returns the list of json string"""
 
         if json_string is None or len(json_string) < 1:
-            return "[]"
+            return []
 
         return json.loads(json_string)
 
@@ -70,7 +71,7 @@ class Base:
         name = cls.__name__ + ".json"
 
         if not os.path.exists(name):
-            return "[]"
+            return []
 
         with open(name, "r") as my_file:
             l = my_file.read()
@@ -78,3 +79,50 @@ class Base:
         objs = cls.from_json_string(l)
 
         return [cls.create(**o) for o in objs]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save csv objects to a file"""
+
+        name = cls.__name__ + ".csv"
+        rect = ("id", "width", "height", "x", "y")
+        sq = ("id", "size", "x", "y")
+
+        if list_objs is None:
+            list_objs = []
+        if cls.__name__ is "Rectangle":
+            list_objs = ([getattr(obj, a) for a in rect] for obj in list_objs)
+            with open(name, "w") as my_file:
+                write = csv.writer(my_file)
+                for i in list_objs:
+                    write.writerow(i)
+
+        if cls.__name__ is "Square":
+            list_objs = ([getattr(obj, a) for a in sq] for obj in list_objs)
+            with open(name, "w") as my_file:
+                write = csv.writer(my_file)
+                for i in list_objs:
+                    write.writerow(i)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """loads a list from a csv file"""
+
+        name = cls.__name__ + ".csv"
+        rect = ("id", "width", "height", "x", "y")
+        sq = ("id", "size", "x", "y")
+
+        if not os.path.exists(name):
+            return []
+
+        if cls.__name__ is "Rectangle":
+            with open(name, "r") as csv_file:
+                objs = list(csv.reader(csv_file))
+            objs = ((int(num) for num in lis) for lis in objs)
+            return [cls.create(**dict(zip(rect, lis))) for lis in objs]
+
+        if cls.__name__ is "Square":
+            with open(name, "r") as csv_file:
+                objs = list(csv.reader(csv_file))
+            objs = ((int(num) for num in lis) for lis in objs)
+            return [cls.create(**dict(zip(sq, lis))) for lis in objs]

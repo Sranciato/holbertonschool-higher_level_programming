@@ -71,8 +71,5 @@ class SquareTest(unittest.TestCase):
         s2 = Square(5, 0, 0, 13)
         self.ae(s2.area(), 25)
 
-    def test_display(self):
-        """test for correct display"""
-
-        s = Square(2)
-        s.display() is "##\n##"
+        with self.assertRaises(ValueError):
+            s3 = Square(-3, 0, 0)

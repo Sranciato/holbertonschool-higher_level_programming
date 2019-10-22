@@ -75,9 +75,3 @@ class RectangleTest(unittest.TestCase):
 
         r2 = Rectangle(5, 6, 0, 0, 13)
         self.ae(r2.area(), 30)
-
-    def test_display(self):
-        """test for correct display"""
-
-        r = Rectangle(2, 2)
-        r.display()
