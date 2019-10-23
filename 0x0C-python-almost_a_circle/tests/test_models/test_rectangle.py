@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module that test Rectangle methods and attributes"""
 
+import pep8
 import unittest
 import models.base
 import models.rectangle
@@ -75,3 +76,11 @@ class RectangleTest(unittest.TestCase):
 
         r2 = Rectangle(5, 6, 0, 0, 13)
         self.ae(r2.area(), 30)
+
+    def test_pep8_conformance(self):
+        """test that we conform to pep8"""
+
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(["models/rectangle.py"])
+        self.ae(result.total_errors, 0,
+                "Found code style errors (and warnings).")

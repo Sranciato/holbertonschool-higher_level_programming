@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module that tests Base class"""
 
+import pep8
 import unittest
 import models.base
 import models.rectangle
@@ -66,3 +67,11 @@ class BaseTest(unittest.TestCase):
 
         json_2 = Base.to_json_string(None)
         self.ae(json_2, "[]")
+
+    def test_pep8_conformance(self):
+        """test that we conform to pep8"""
+
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(["models/base.py"])
+        self.ae(result.total_errors, 0,
+                "Found code style errors (and warnings).")
