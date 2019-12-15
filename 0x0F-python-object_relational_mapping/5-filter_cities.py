@@ -13,7 +13,7 @@ if __name__ == "__main__":
     )
     c = db.cursor()
     c.execute(
-        """SELECT cities.id, cities.name, states.name FROM cities
+        """SELECT cities.name FROM cities
         JOIN states ON cities.state_id = states.id
         WHERE states.name=%s
         ORDER BY 'cities.id' ASC;""", (sys.argv[4], )
@@ -21,8 +21,8 @@ if __name__ == "__main__":
     record = c.fetchall()
     for row in record:
         if row == record[-1]:
-            print(row[1])
+            print(row[0])
         else:
-            print(row[1] + ", ", end="")
+            print(row[0] + ", ", end="")
     c.close()
     db.close()
