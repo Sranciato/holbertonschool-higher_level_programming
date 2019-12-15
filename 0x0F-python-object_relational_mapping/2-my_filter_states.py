@@ -18,6 +18,6 @@ if __name__ == "__main__":
         ORDER BY states.id ASC;""".format(sys.argv[4]))
     record = c.fetchall()
     for row in record:
-        print("({}, \'{}\')".format(row[0], row[1]))
+        print(str(row))
     c.close()
     db.close()
