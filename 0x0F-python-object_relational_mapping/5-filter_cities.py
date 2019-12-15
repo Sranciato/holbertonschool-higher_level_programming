@@ -19,13 +19,10 @@ if __name__ == "__main__":
         ORDER BY 'cities.id' ASC;""", (sys.argv[4], )
     )
     record = c.fetchall()
-    i = len(record)
-    end = 1
     for row in record:
-        if end < i:
-            print("{}, ".format(row[1]), end="")
+        if row == record[-1]:
+            print(row[1])
         else:
-            print("{}".format(row[1]))
-        end += 1
+            print(row[1] + ", ", end="")
     c.close()
     db.close()
