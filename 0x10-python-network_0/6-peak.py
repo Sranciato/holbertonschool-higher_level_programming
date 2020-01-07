@@ -11,10 +11,8 @@ def find_peak(list_of_integers):
         return None
     if length == 1:
         return (lis[0])
-    peak = lis[0]
 
-    for i in range(1, length):
-        if lis[i] > peak:
-            peak = lis[i]
-
-    return (peak)
+    for i in range(0, length - 1):
+        if lis[i] > lis[i + 1]:
+            return (lis[i])
+    return (lis[i + 1])
