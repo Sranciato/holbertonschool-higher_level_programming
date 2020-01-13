@@ -14,9 +14,9 @@ if __name__ == "__main__":
             "http://0.0.0.0:5000/search_user",
             data={'q': q}
         ).json()
-    except ValueError:
+    except:
         print("Not a valid JSON")
-    if response == {}:
+    if ('id' and 'name') not in response:
         print("No result")
     else:
         print("[{}] {}".format(response['id'], response['name']))
