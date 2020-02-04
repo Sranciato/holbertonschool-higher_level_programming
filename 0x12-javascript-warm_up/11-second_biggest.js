@@ -9,5 +9,8 @@ if (process.argv.length < 4) {
       max = sorted[i];
     }
   }
+  if (sorted[0] === sorted[sorted.length - 1]) {
+    max = sorted[0];
+  }
   console.log(max);
 }
