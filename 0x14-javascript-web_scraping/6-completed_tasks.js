@@ -12,7 +12,7 @@ request.get(url, function (error, response, body) {
       count = 0;
     }
     if (user.completed === true) {
-      dict[prevId] = count += 1;
+      dict[user.userId] = count += 1;
     }
   }
   console.log(dict);
