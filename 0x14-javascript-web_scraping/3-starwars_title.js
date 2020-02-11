@@ -5,6 +5,5 @@ request.get(url, 'response', function (error, response, body) {
   if (error) {
     return;
   }
-  const movie = JSON.parse(body);
-  console.log(movie.title);
+  console.log(JSON.parse(body).title);
 });
