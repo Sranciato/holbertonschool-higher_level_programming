@@ -9,7 +9,7 @@ request.get(url, function (error, response, body) {
   let count = 0;
   for (const movie of JSON.parse(body).results) {
     for (const people of movie.characters) {
-      if (people === peopleUrl) { count += 1; }
+      if (people === peopleUrl) { count++; }
     }
   }
   console.log(count);
