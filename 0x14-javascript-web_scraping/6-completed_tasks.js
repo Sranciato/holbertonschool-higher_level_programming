@@ -2,16 +2,17 @@
 const request = require('request');
 const url = process.argv[2];
 request.get(url, function (error, response, body) {
-  if (error) { throw error; }
+  if (error) { return; }
   const dict = {};
   let count = 0;
+  let prevId = 1;
   for (const user of JSON.parse(body)) {
+    if (user.userId > prevId) {
+      prevId = user.userId;
+      count = 0;
+    }
     if (user.completed === true) {
-      if (dict[user.userId] === undefined) {
-        count = 0;
-        dict[user.userId] = count;
-      }
-      dict[user.userId] = count += 1;
+      dict[prevId] = count += 1;
     }
   }
   console.log(dict);
