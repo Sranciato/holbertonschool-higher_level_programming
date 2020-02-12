@@ -10,7 +10,6 @@ request.get(url, function (error, response, body) {
     if (user.userId > prevId) {
       prevId = user.userId;
       count = 0;
-      dict[prevId] = count;
     }
     if (user.completed === true) {
       dict[prevId] = count += 1;
