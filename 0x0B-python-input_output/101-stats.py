@@ -34,11 +34,11 @@ if __name__ == "__main__":
                 status = line.split(" ")[-2]
                 size = line.split(" ")[-1]
                 file_size += int(size)
+                dict[status] += 1
             except Exception:
                 continue
             if num_lines % 10 == 0:
                 print_every10()
-            dict[status] += 1
             num_lines += 1
 
     except KeyboardInterrupt:
